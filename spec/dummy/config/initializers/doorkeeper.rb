@@ -6,7 +6,7 @@ Doorkeeper.configure do
 
   # This block will be called to check whether the resource owner is authenticated or not.
   resource_owner_authenticator do
-    sso_session = Doorkeeper::SSO::Session.find_by(guid: cookies['_dummy_sso_session_guid'])
+    sso_session = Doorkeeper::SSO::Session.find_by(guid: cookies[Doorkeeper::SSO.cookie_name])
     user =
       if sso_session && !sso_session.signed_out && sso_session.resource_owner_id == session[:user_id]
         User.find_by_id(session[:user_id])
@@ -22,7 +22,14 @@ Doorkeeper.configure do
   # every time somebody will try to access the admin web interface.
   #
   admin_authenticator do
-    true
+    sso_session = Doorkeeper::SSO::Session.find_by(guid: cookies[Doorkeeper::SSO.cookie_name])
+    user =
+      if sso_session && !sso_session.signed_out && sso_session.resource_owner_id == session[:user_id]
+        User.find_by_id(session[:user_id])
+      else
+        nil
+      end
+    user || redirect_to(sign_in_url)
   end
 
   # If you are planning to use Doorkeeper in Rails 5 API-only application, then you might

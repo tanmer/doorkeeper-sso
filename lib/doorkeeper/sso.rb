@@ -7,8 +7,8 @@ require "doorkeeper/sso/engine"
 
 module Doorkeeper
   module SSO
-    class << self
-      attr_accessor :cookie_name
-    end
+    mattr_accessor :cookie_name
+    mattr_accessor :on_signed_in, default: ->(_) {}
+    mattr_accessor :on_signed_out, default: ->(_) {}
   end
 end

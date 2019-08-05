@@ -21,5 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'guard-rspec', '~> 4.7', '>= 4.7.3'
   spec.add_development_dependency 'rails', '~> 5.2', '>= 5.2.3'
   spec.add_development_dependency 'rspec-rails', '~> 3.8', '>= 3.8.2'
+  spec.add_development_dependency 'shoulda-matchers', '~> 4.1', '>= 4.1.2'
+  spec.add_development_dependency 'simplecov', '~> 0.17.0'
   spec.add_development_dependency 'sqlite3', '~> 1.4', '>= 1.4.1'
 end

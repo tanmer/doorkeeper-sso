@@ -9,12 +9,6 @@ module Doorkeeper::SSO::Concerns
       v
     end
 
-    def revoke
-
-      binding.pry
-
-    end
-
     def revoke_token
       super
       if token.application.sso && token.sso_session_guid
