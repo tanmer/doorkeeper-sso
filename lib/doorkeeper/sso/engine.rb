@@ -9,8 +9,10 @@ module Doorkeeper
       end
 
       initializer 'doorkeeper-sso.feature', after: 'doorkeeper.helpers' do
+        require 'doorkeeper/sso/concerns/applications_controller_concern'
         require 'doorkeeper/sso/concerns/authorizations_controller_concern'
         require 'doorkeeper/sso/concerns/tokens_controller_concern'
+        Doorkeeper::ApplicationsController.prepend Doorkeeper::SSO::Concerns::ApplicationsControllerConcern
         Doorkeeper::AuthorizationsController.prepend Doorkeeper::SSO::Concerns::AuthorizationsControllerConcern
         Doorkeeper::TokensController.prepend Doorkeeper::SSO::Concerns::TokensControllerConcern
       end
