@@ -14,6 +14,6 @@ class CreateDoorkeeperSSOTables < ActiveRecord::Migration[5.2]
     add_index :oauth_access_grants, :sso_session_guid
     add_column :oauth_access_tokens, :sso_session_guid, :string
     add_index :oauth_access_tokens, :sso_session_guid
-    add_column :oauth_applications, :sso, :boolean, default: false
+    add_column :oauth_applications, :is_sso, :boolean, default: false
   end
 end

@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 3) do
     t.boolean "confidential", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "sso", default: false
+    t.boolean "is_sso", default: false
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true
   end
 

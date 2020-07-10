@@ -2,4 +2,4 @@ en:
   doorkeeper:
     applications:
       help:
-        sso: A SSO(Single-Sign-On) and SLO(Single-Log-Out) Application
+        is_sso: A SSO(Single-Sign-On) and SLO(Single-Log-Out) Application

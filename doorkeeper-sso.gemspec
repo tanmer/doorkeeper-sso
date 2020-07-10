@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  spec.add_dependency 'doorkeeper', '~> 5.1'
+  spec.add_dependency 'doorkeeper', '~> 5.4.0'
 
   spec.add_development_dependency 'guard-rspec', '~> 4.7', '>= 4.7.3'
   spec.add_development_dependency 'rails', '~> 5.2', '>= 5.2.3'

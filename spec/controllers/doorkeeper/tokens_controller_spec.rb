@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Doorkeeper::TokensController, type: :controller do
-  let!(:application) { Doorkeeper::Application.create!(name: 'example1', sso: true, redirect_uri: 'urn:ietf:wg:oauth:2.0:oob') }
+  let!(:application) { Doorkeeper::Application.create!(name: 'example1', is_sso: true, redirect_uri: 'urn:ietf:wg:oauth:2.0:oob') }
   let!(:user) { User.create! name: 'user1' }
   let!(:sso_session) { Doorkeeper::SSO::Session.create! resource_owner_id: user.id }
   let!(:access_grant) { application.access_grants.create! sso_session_guid: sso_session.guid, resource_owner_id: sso_session.resource_owner_id, expires_in: 10.minutes.since, redirect_uri: application.redirect_uri, scopes: application.scopes }

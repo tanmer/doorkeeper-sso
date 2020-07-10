@@ -5,7 +5,7 @@ describe "doorkeeper/applications/_form.html.erb" do
     render partial: 'doorkeeper/applications/form.html.erb',
           locals: { application: Doorkeeper::Application.new }
 
-    expect(rendered).to include('<input name="doorkeeper_application[sso]"')
-    expect(rendered).not_to include('translation missing: en.doorkeeper.applications.help.sso')
+    expect(rendered).to include('<input name="doorkeeper_application[is_sso]"')
+    expect(rendered).not_to include('translation missing: en.doorkeeper.applications.help.is_sso')
   end
 end

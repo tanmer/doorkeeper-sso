@@ -2,6 +2,10 @@
 
 This gem makes Doorkeeper acts as real SSO(Single-Sign-On)/SLO(Single-Log-Out) system. Original doorkeeper can be a SSO system, but it isn't a SLO system, which mean one place logout, another place and Account center still be logged in. With this gem, all places will be logged out.
 
+## Changelog
+
+[CHANGELOG.md](CHANGELOG.md)
+
 ## Theory
 
 ### Sign in from SSO Web site

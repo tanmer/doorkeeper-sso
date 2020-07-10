@@ -15,9 +15,9 @@ RSpec.describe Doorkeeper::ApplicationsController, type: :controller do
         redirect_uri: 'callback',
         scopes: 'public',
         confidential: true,
-        sso: true
+        is_sso: true
       }
     }
-    should permit(:name, :redirect_uri, :scopes, :confidential, :sso).for(:create, params: params).on(:doorkeeper_application)
+    should permit(:name, :redirect_uri, :scopes, :confidential, :is_sso).for(:create, params: params).on(:doorkeeper_application)
   end
 end
