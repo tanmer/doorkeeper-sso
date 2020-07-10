@@ -1,0 +1,5 @@
+zh-CN:
+  doorkeeper:
+    applications:
+      help:
+        is_sso: 作为单点登录和单点登出应用，一处退出，全部相关的应用都退出。
