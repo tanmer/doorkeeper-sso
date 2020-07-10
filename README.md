@@ -61,6 +61,20 @@ SSO Web Site -->> Browser: Sign out successfully, delete session guid and creden
 
 ## Usage
 
+### requirements
+
+```ruby
+gem 'doorkeeper', '~ 5.1'
+```
+
+```shell
+bundle i
+rails g doorkeeper:install
+rails g doorkeeper:migration
+rake doorkeeper_sso:install:migrations
+rails db:migrate
+```
+
 ### configuration
 
 ```ruby
