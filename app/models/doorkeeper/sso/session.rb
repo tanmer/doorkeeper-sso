@@ -14,7 +14,7 @@ module Doorkeeper::SSO
       transaction do
         access_tokens.each(&:revoke)
         access_grants.each(&:revoke)
-        update signed_out: true
+        update_columns signed_out: true
       end
     end
 
@@ -61,6 +61,7 @@ module Doorkeeper::SSO
       return if s.nil?
 
       s.sign_out!
+      s
     end
 
     def self.from_cookie(cookies)
