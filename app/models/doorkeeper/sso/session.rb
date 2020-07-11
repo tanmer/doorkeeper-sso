@@ -46,14 +46,13 @@ module Doorkeeper::SSO
       cookies = controller.send(:cookies)
       session = controller.send(:session)
       sso_session = from_cookie(cookies)
+      sso_session.sign_out! if sso_session
       cookies.delete Doorkeeper::SSO.cookie_name
       callback_args = { controller: controller, cookies: cookies,
                         session: session, sso_session: sso_session }
-      Doorkeeper::SSO.on_signed_in.call(callback_args)
+      Doorkeeper::SSO.on_signed_out.call(callback_args)
       yield callback_args if block_given?
-      return if sso_session.nil?
-
-      sso_session.sign_out!
+      sso_session
     end
 
     # sign out from API(eg. POST /oauth/revoke?token=xxx)
@@ -74,7 +73,7 @@ module Doorkeeper::SSO
     private
 
     def set_guid
-      self.guid ||= SecureRandom.hex
+      self.guid ||= SecureRandom.uuid
     end
   end
 end
