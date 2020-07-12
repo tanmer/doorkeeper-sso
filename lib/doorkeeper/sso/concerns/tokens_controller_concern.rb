@@ -1,12 +1,13 @@
 module Doorkeeper::SSO::Concerns
   module TokensControllerConcern
     def authorize_response
-      v = super
-      if strategy.request.client.application.is_sso
-        v.token.sso_session_guid = strategy.request.grant.sso_session_guid
-        v.token.save!
+      super.tap do |resp|
+        if resp.is_a?(Doorkeeper::OAuth::TokenResponse)
+          if strategy.request.client.application.is_sso && resp.token.sso_session_guid.nil?
+            resp.token.update_columns sso_session_guid: strategy.request.grant.sso_session_guid
+          end
+        end
       end
-      v
     end
 
     def revoke_token
